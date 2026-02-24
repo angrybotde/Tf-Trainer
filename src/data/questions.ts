@@ -38,6 +38,23 @@ export const QUESTIONS: Question[] = [
     sourceUrl: 'https://www.gesetze-im-internet.de/ebo/__10.html'
   },
 
+  // --- Abkürzungen ---
+  {
+    id: 'abk_1',
+    theme: 'Abkürzungen',
+    question: 'Wofür steht LZB?',
+    answer: 'Linienzugbeeinflussung',
+    options: [
+      'Lineare Zugbeeinflussung',
+      'Linienzugbeeinflussung',
+      'Leitzentralenbeamter',
+      'Längsförmige Zugbeeinflussung'
+    ],
+    isSafetyCritical: true,
+    source: 'Ril 408.0054',
+    sourceUrl: 'https://www.dbinfrago.com/resource/blob/13309938/be53e2de35c1f14ae6f55d22bd19852a/40800-ab-15-12-2024-data.pdf#page=16'
+  },
+
   // --- RIL 408: DEFINITIONEN ---
   {
     id: 'def_1',
