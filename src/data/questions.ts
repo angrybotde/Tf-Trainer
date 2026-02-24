@@ -427,7 +427,7 @@ export const QUESTIONS: Question[] = [
   // --- UVV: SICHERHEIT ---
   {
     id: 'uvv_1',
-    theme: 'Sicherheit',
+    theme: 'Sicherheit (UVV)',
     question: 'Wie groß ist der Sicherheitsabstand zu unter Spannung stehenden Oberleitungen?',
     answer: 'Mindestens 1,50 Meter (Unterwiesene). 3,00 Meter (nicht Unterwiesene).',
     options: [
@@ -519,7 +519,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 'ext_6',
-    theme: 'Befehle',
+    theme: 'Zugfahrt',
     question: 'Darf ein Befehl über Funk diktiert werden?',
     answer: 'Ja, wenn der Zug steht.',
     options: [
@@ -534,7 +534,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 'ext_7',
-    theme: 'Technik',
+    theme: 'Betrieb',
     question: 'Was ist die "Sifa"?',
     answer: 'Sicherheitsfahrschaltung zur Überwachung der Dienstfähigkeit des Tf.',
     options: [
