@@ -31,8 +31,8 @@ export const QUESTIONS: Question[] = [
     id: 'ebo_3',
     theme: 'EBO',
     question: 'Wie groß darf der Gleisabstand bei bestehenden Anlagen auf Hauptbahnen nicht unterschreiten?',
-    answer: '3,50 m.',
-    options: ['3,50 m.', '3,25 m.', '4,00 m.', '3,00 m.'],
+    answer: '3,80 m.',
+    options: ['3,80 m.', '3,25 m.', '4,00 m.', '3,00 m.'],
     isSafetyCritical: false,
     source: 'EBO §10',
     sourceUrl: 'https://www.gesetze-im-internet.de/ebo/__10.html'
@@ -343,49 +343,6 @@ export const QUESTIONS: Question[] = [
     source: 'Ril 408.0401',
     sourceUrl: 'https://www.dbinfrago.com/web/schienennetz/regelwerke/fahrdienstvorschrift'
   },
-
-  // --- RIL 408: BEFEHLE ---
-  {
-    id: 'bef_1',
-    theme: 'Befehle',
-    question: 'Was regelt Befehl 1?',
-    answer: 'Ausfahrt aus einem Bahnhof ohne Ausfahrsignal.',
-    options: [
-      'Ausfahrt aus einem Bahnhof ohne Ausfahrsignal.',
-      'Einfahrt in einen Bahnhof gegen Halt.',
-      'Vorbeifahrt an einem Halt zeigenden Signal.',
-      'Fahren auf Sicht.'
-    ],
-    isSafetyCritical: true,
-    source: 'Ril 408.0401',
-    sourceUrl: 'https://www.dbinfrago.com/web/schienennetz/regelwerke/fahrdienstvorschrift'
-  },
-  {
-    id: 'bef_2',
-    theme: 'Befehle',
-    question: 'Was regelt Befehl 2?',
-    answer: 'Vorbeifahrt an einem Halt zeigenden oder gestörten Hauptsignal.',
-    options: [
-      'Vorbeifahrt an einem Halt zeigenden oder gestörten Hauptsignal.',
-      'Fahren im Gegengleis.',
-      'Anhalten an einer unvorhergesehenen Stelle.',
-      'Weiterfahrt nach einer Zwangsbremsung.'
-    ],
-    isSafetyCritical: true,
-    source: 'Ril 408.0401',
-    sourceUrl: 'https://www.dbinfrago.com/web/schienennetz/regelwerke/fahrdienstvorschrift'
-  },
-  {
-    id: 'bef_3',
-    theme: 'Befehle',
-    question: 'Welcher Befehl ordnet das Fahren auf Sicht an?',
-    answer: 'Befehl 12.',
-    options: ['Befehl 12.', 'Befehl 1.', 'Befehl 7.', 'Befehl 14.'],
-    isSafetyCritical: true,
-    source: 'Ril 408.0401',
-    sourceUrl: 'https://www.dbinfrago.com/web/schienennetz/regelwerke/fahrdienstvorschrift'
-  },
-
   // --- RIL 408: UNREGELMÄSSIGKEITEN ---
   {
     id: 'unr_1',
@@ -455,8 +412,13 @@ export const QUESTIONS: Question[] = [
     id: 'uvv_1',
     theme: 'Sicherheit',
     question: 'Wie groß ist der Sicherheitsabstand zu unter Spannung stehenden Oberleitungen?',
-    answer: 'Mindestens 1,50 Meter.',
-    options: ['Mindestens 1,50 Meter.', 'Mindestens 1,00 Meter.', 'Mindestens 2,00 Meter.', 'Mindestens 3,00 Meter.'],
+    answer: 'Mindestens 1,50 Meter (Unterwiesene). 3,00 Meter (nicht Unterwiesene).',
+    options: [
+        'Mindestens 1,50 Meter (Unterwiesene). 3,00 Meter (nicht Unterwiesene).', 
+        'Mindestens 1,00 Meter (Unterwiesene). 1,50 Meter (nicht Unterwiesene).', 
+        'Mindestens 2,50 Meter (Unterwiesene). 3,50 Meter (nicht Unterwiesene).', 
+        'Mindestens 3,00 Meter.'
+    ],
     isSafetyCritical: true,
     source: 'UVV VBG',
     sourceUrl: 'https://www.vbg.de/'
@@ -703,16 +665,6 @@ export const QUESTIONS: Question[] = [
     options: ['Seitliches Zusammenstoßen zweier Fahrzeuge.', 'Ein Auffahrunfall.', 'Das Entgleisen einer Weiche.', 'Das Befahren eines falschen Gleises.'],
     isSafetyCritical: true,
     source: 'Ril 408.0101',
-    sourceUrl: 'https://www.dbinfrago.com/web/schienennetz/regelwerke/fahrdienstvorschrift'
-  },
-  {
-    id: 'ril_10',
-    theme: 'Befehle',
-    question: 'Welcher Befehl wird für die Vorbeifahrt an einem Halt zeigenden Signal verwendet?',
-    answer: 'Befehl 2.',
-    options: ['Befehl 2.', 'Befehl 1.', 'Befehl 3.', 'Befehl 12.'],
-    isSafetyCritical: true,
-    source: 'Ril 408.0401',
     sourceUrl: 'https://www.dbinfrago.com/web/schienennetz/regelwerke/fahrdienstvorschrift'
   },
 
