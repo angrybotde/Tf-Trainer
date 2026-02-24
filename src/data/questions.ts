@@ -57,6 +57,23 @@ export const QUESTIONS: Question[] = [
 
   // --- RIL 408: DEFINITIONEN ---
   {
+    id: 'multi_001',
+    theme: 'Definitionen',
+    question: 'Welche der folgenden sind Blockstellen?',
+    answer: 'Erklärung: Blockstellen teilen die Strecke in Blockabschnitte. Das sind Abzweigstellen, Überleitstellen, Deckungsstellen.',
+    options: [
+      'Bahnhöfe',
+      'Abzweigstellen',
+      'Haltepunkte',
+      'Überleitstellen',
+      'Deckungsstellen'
+    ],
+    correctOptions: ['Abzweigstellen', 'Überleitstellen', 'Deckungsstellen'],
+    isSafetyCritical: false,
+    source: 'Ril 408.0101',
+    sourceUrl: 'https://www.dbinfrago.com/web/schienennetz/regelwerke/fahrdienstvorschrift'
+  },
+  {
     id: 'def_1',
     theme: 'Definitionen',
     question: 'Was sind Bahnhöfe?',

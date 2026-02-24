@@ -14,6 +14,7 @@ export interface Question {
   question: string;
   answer: string;
   options?: string[]; // For Multiple Choice
+  correctOptions?: string[];   // NEU: Array der exakt richtigen Option-Texte
   isSafetyCritical: boolean;
   source: string;
   sourceUrl?: string;
