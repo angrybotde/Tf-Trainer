@@ -14,6 +14,7 @@ import {
   AlertTriangle,
   RotateCcw,
   CheckCircle2,
+  Check,
   XCircle,
   Menu,
   X
@@ -29,7 +30,8 @@ export default function App() {
   const [selectedTheme, setSelectedTheme] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
-  const [userInput, setUserInput] = useState('');
+  //const [userInput, setUserInput] = useState('');
+  const [userSelection, setUserSelection] = useState<string[]>([]);
   const [isGameOver, setIsGameOver] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [sessionQuestions, setSessionQuestions] = useState<Question[]>([]);
@@ -63,16 +65,28 @@ export default function App() {
     setSessionQuestions(qs);
     setCurrentIndex(0);
     setShowAnswer(false);
-    setUserInput('');
+    //setUserInput('');
+    setUserSelection('');
   }, [mode, selectedTheme]); // Removed progress dependencies to keep session stable
 
   const currentQuestion = sessionQuestions[currentIndex];
+
+  // Mehrfachauswahl
+  const isMultiSelect = currentQuestion?.correctOptions && currentQuestion.correctOptions.length > 1;
+
+  const toggleSelection = (option: string) => {
+    setUserSelection(prev =>
+      prev.includes(option)
+        ? prev.filter(o => o !== option)
+        : [...prev, option]
+    );
+  };
 
   const handleNext = () => {
     if (currentIndex < sessionQuestions.length - 1) {
       setCurrentIndex(prev => prev + 1);
       setShowAnswer(false);
-      setUserInput('');
+      //setUserInput('');
     }
   };
 
@@ -80,10 +94,11 @@ export default function App() {
     if (currentIndex > 0) {
       setCurrentIndex(prev => prev - 1);
       setShowAnswer(false);
-      setUserInput('');
+      //setUserInput('');
     }
   };
 
+  /* Veraltete Single-Antwort Funktion
   const handleSubmitAnswer = (answer: string) => {
     if (showAnswer) return;
     
@@ -97,6 +112,34 @@ export default function App() {
 
     recordAnswer(currentQuestion.id, isCorrect);
     setShowAnswer(true);
+  };
+  */
+
+  // Auswertung von Multiple-Choice-Fragen mit Mehrfachauswahl
+  const handleSubmitAnswer = (selected: string | string[]) => {
+    if (showAnswer) return;
+
+    let isCorrect = false;
+
+    if (Array.isArray(selected)) {
+      // Multi-Select
+      const correct = currentQuestion.correctOptions || [currentQuestion.answer];
+      const userSorted = [...selected].sort();
+      const correctSorted = [...correct].sort();
+      isCorrect = userSorted.length === correctSorted.length &&
+                  userSorted.every((v, i) => v === correctSorted[i]);
+    } else {
+      // Single-Choice (wie früher)
+      isCorrect = selected.toLowerCase().trim() === currentQuestion.answer.toLowerCase().trim();
+    }
+
+    recordAnswer(currentQuestion.id, isCorrect);
+    setShowAnswer(true);
+
+    if (!isCorrect && currentQuestion.isSafetyCritical) {
+      setIsGameOver(true);
+      setTimeout(() => setIsGameOver(false), 3000);
+    }
   };
 
   const successRate = getSuccessRate();
@@ -272,16 +315,47 @@ export default function App() {
                           {!showAnswer ? (
                             <div className="space-y-4">
                               <div className="grid grid-cols-1 gap-3">
-                                {(currentQuestion.options || [currentQuestion.answer]).map((option, i) => (
-                                  <button
-                                    key={i}
-                                    onClick={() => handleSubmitAnswer(option)}
-                                    className="w-full text-left px-6 py-4 rounded-xl border border-black/10 hover:border-black hover:bg-black/5 transition-all text-sm font-medium"
-                                  >
-                                    {option}
-                                  </button>
-                                ))}
+                                {(currentQuestion.options || [currentQuestion.answer]).map((option, i) => {
+                                  const isSelected = userSelection.includes(option);
+
+                                  return (
+                                    <button
+                                      key={i}
+                                      onClick={() => {
+                                        if (isMultiSelect) {
+                                          toggleSelection(option);
+                                        } else {
+                                          handleSubmitAnswer(option);
+                                        }
+                                      }}
+                                      className={`w-full text-left px-6 py-4 rounded-xl border transition-all text-sm font-medium flex items-center gap-3 ${
+                                        isSelected
+                                          ? 'border-black bg-black/5'
+                                          : 'border-black/10 hover:border-black hover:bg-black/5'
+                                      }`}
+                                    >
+                                      {isMultiSelect && (
+                                        <div className={`w-5 h-5 rounded border flex items-center justify-center flex-shrink-0 ${
+                                          isSelected ? 'bg-black border-black' : 'border-black/40'
+                                        }`}>
+                                          {isSelected && <Check size={14} className="text-white" />}
+                                        </div>
+                                      )}
+                                      <span>{option}</span>
+                                    </button>
+                                  );
+                                })}
                               </div>
+
+                              {isMultiSelect && (
+                                <button
+                                  onClick={() => handleSubmitAnswer(userSelection)}
+                                  disabled={userSelection.length === 0}
+                                  className="mt-6 w-full py-4 bg-black text-white rounded-xl font-medium hover:bg-black/90 disabled:bg-black/30 disabled:cursor-not-allowed transition"
+                                >
+                                  Antwort prüfen {userSelection.length > 0 && `(${userSelection.length})`}
+                                </button>
+                              )}
                             </div>
                           ) : (
                             <motion.div 
@@ -291,12 +365,13 @@ export default function App() {
                             >
                               <div className="grid grid-cols-1 gap-3">
                                 {(currentQuestion.options || [currentQuestion.answer]).map((option, i) => {
-                                  const isCorrect = option === currentQuestion.answer;
-                                  const isSelected = option === userInput;
-                                  
+                                  const correctOptions = currentQuestion.correctOptions || [currentQuestion.answer];
+                                  const isCorrect = correctOptions.includes(option);
+                                  const isSelected = userSelection.includes(option);
+
                                   let style = "border-black/10 opacity-50";
                                   if (isCorrect) style = "bg-emerald-50 border-emerald-500 text-emerald-700";
-                                  else if (isSelected) style = "bg-red-50 border-red-500 text-red-700";
+                                  else if (isSelected && !isCorrect) style = "bg-red-50 border-red-500 text-red-700";
 
                                   return (
                                     <div
