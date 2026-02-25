@@ -157,7 +157,23 @@ export default function App() {
               <Menu size={20} />
             </button>
             <h1 className="text-xl font-semibold tracking-tight flex items-center gap-2">
-              Tf-Prüfungshelfer
+              <svg 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+                className="text-black"
+              >
+                {/* Stilisiertes Triebfahrzeug von vorne */}
+                <rect x="4" y="8" width="16" height="12" rx="2" fill="currentColor" />
+                <circle cx="8" cy="14" r="2" fill="white" />
+                <circle cx="16" cy="14" r="2" fill="white" />
+                <rect x="6" y="6" width="12" height="2" fill="currentColor" /> {/* Dach */}
+                <rect x="9" y="10" width="6" height="4" fill="#000" opacity="0.3" /> {/* Fenster */}
+                <path d="M5 20 H19" stroke="currentColor" strokeWidth="1.5" /> {/* Schienen-Andeutung */}
+              </svg>
+              Tf-Prüfungshelfer (Stand: 02/2026)
             </h1>
           </div>
         </div>

@@ -60,15 +60,17 @@ export const QUESTIONS: Question[] = [
     id: 'multi_001',
     theme: 'Definitionen',
     question: 'Welche der folgenden sind Blockstellen?',
-    answer: 'Erklärung: Blockstellen teilen die Strecke in Blockabschnitte. Das sind Abzweigstellen, Überleitstellen, Deckungsstellen.',
+    answer: 'Erklärung: Blockstellen teilen die Strecke in Blockabschnitte. Das sind Abzweigstellen, Überleitstellen.',
     options: [
       'Bahnhöfe',
       'Abzweigstellen',
-      'Haltepunkte',
       'Überleitstellen',
+      'Anschlussstellen',
+      'Haltepunkte',
+      'Haltestelle',
       'Deckungsstellen'
     ],
-    correctOptions: ['Abzweigstellen', 'Überleitstellen', 'Deckungsstellen'],
+    correctOptions: ['Abzweigstellen', 'Überleitstellen'],
     isSafetyCritical: false,
     source: 'Ril 408.0101',
     sourceUrl: 'https://www.dbinfrago.com/web/schienennetz/regelwerke/fahrdienstvorschrift'
@@ -167,31 +169,31 @@ export const QUESTIONS: Question[] = [
     id: 'def_7',
     theme: 'Definitionen',
     question: 'Was sind Anschlussstellen (Anst)?',
-    answer: 'Anschlussstellen sind Bahnanlagen der freien Strecke, wo Züge ein Gleis als Rangierfahrt befahren können, ohne dass der Blockabschnitt für einen anderen Zug freigegeben wird.',
+    answer: 'Anschlussstellen sind Bahnanlagen der freien Strecke, wo Züge ein angeschlossenes Gleis als Rangierfahrt befahren können, bei denen die Blockstrecke nicht für einen anderen Zug freigegeben wird.',
     options: [
-      'Anschlussstellen sind Bahnanlagen der freien Strecke, wo Züge ein Gleis als Rangierfahrt befahren können, ohne dass der Blockabschnitt für einen anderen Zug freigegeben wird.',
-      'Anschlussstellen sind Bahnhöfe, die an eine andere Strecke angeschlossen sind.',
-      'Anschlussstellen sind Stellen, an denen Züge die Fahrtrichtung ändern.',
+      'Anschlussstellen sind Bahnanlagen der freien Strecke, wo Züge ein angeschlossenes Gleis als Rangierfahrt befahren können, bei denen die Blockstrecke nicht für einen anderen Zug freigegeben wird.',
+      'Anschlussstellen sind Bahnanlagen der freien Strecke, bei denen Bahnhöfe oder Haltepunkte mit einer Abzweigstellen örtlich zusammenfallen.',
+      'Anschlussstellen sind Bahnanlagen der freien Strecke, wo Züge ein angeschlossenes Gleis als Rangierfahrt befahren können, bei denen die Blockstrecke für einen anderen Zug freigegeben wird.',
       'Anschlussstellen sind Stellen, an denen Züge Wasser oder Kohle aufnehmen.'
     ],
     isSafetyCritical: false,
-    source: 'Ril 408.0101',
-    sourceUrl: 'https://www.dbinfrago.com/web/schienennetz/regelwerke/fahrdienstvorschrift'
+    source: 'Ril 408.0055',
+    sourceUrl: 'https://www.dbinfrago.com/resource/blob/13309938/be53e2de35c1f14ae6f55d22bd19852a/40800-ab-15-12-2024-data.pdf#pages=21'
   },
   {
     id: 'def_8',
     theme: 'Definitionen',
     question: 'Was sind Ausweichanschlussstellen (Awanst)?',
-    answer: 'Anschlussstellen, bei denen die Blockbedienung so erfolgt, dass der Blockabschnitt für einen anderen Zug freigegeben werden kann.',
+    answer: 'Ausweichanschlussstellen sind Bahnanlagen der freien Strecke, wo Züge ein angeschlossenes Gleis als Rangierfahrt befahren können, bei denen die Blockstrecke für einen anderen Zug freigegeben wird.',
     options: [
-      'Anschlussstellen, bei denen die Blockbedienung so erfolgt, dass der Blockabschnitt für einen anderen Zug freigegeben werden kann.',
-      'Anschlussstellen, die nur von Güterzügen genutzt werden.',
-      'Anschlussstellen, die sich innerhalb eines Bahnhofs befinden.',
-      'Anschlussstellen ohne Weichen.'
+      'Ausweichanschlussstellen sind Bahnanlagen der freien Strecke, wo Züge ein angeschlossenes Gleis als Rangierfahrt befahren können, bei denen die Blockstrecke nicht für einen anderen Zug freigegeben wird.',
+      'Ausweichanschlussstellen sind Bahnanlagen der freien Strecke, bei denen Bahnhöfe oder Haltepunkte mit einer Abzweigstellen örtlich zusammenfallen.',
+      'Ausweichanschlussstellen sind Bahnanlagen der freien Strecke, wo Züge ein angeschlossenes Gleis als Rangierfahrt befahren können, bei denen die Blockstrecke für einen anderen Zug freigegeben wird.',
+      'Ausweichanschlussstellen sind Stellen, an denen Züge Wasser oder Kohle aufnehmen.'
     ],
     isSafetyCritical: false,
-    source: 'Ril 408.0101',
-    sourceUrl: 'https://www.dbinfrago.com/web/schienennetz/regelwerke/fahrdienstvorschrift'
+    source: 'Ril 408.0055',
+    sourceUrl: 'https://www.dbinfrago.com/resource/blob/13309938/be53e2de35c1f14ae6f55d22bd19852a/40800-ab-15-12-2024-data.pdf#pages=21'
   },
   {
     id: 'def_9',
@@ -235,8 +237,8 @@ export const QUESTIONS: Question[] = [
       'Überleitstellen sind Stellen, an denen Züge gewendet werden.'
     ],
     isSafetyCritical: false,
-    source: 'Ril 408.0101',
-    sourceUrl: 'https://www.dbinfrago.com/web/schienennetz/regelwerke/fahrdienstvorschrift'
+    source: 'Ril 408.0055',
+    sourceUrl: 'https://www.dbinfrago.com/resource/blob/13309938/be53e2de35c1f14ae6f55d22bd19852a/40800-ab-15-12-2024-data.pdf#pages=33'
   },
   {
     id: 'def_12',
@@ -493,16 +495,16 @@ export const QUESTIONS: Question[] = [
     id: 'ext_3',
     theme: 'Definitionen',
     question: 'Was ist eine "Überleitstelle"?',
-    answer: 'Blockstelle der freien Strecke, wo Züge von einem Gleis auf ein anderes Gleis derselben Strecke übergehen können.',
+    answer: 'Blockstelle der freien Strecke, wo Züge auf ein anderes Gleis derselben Strecke übergehen können.',
     options: [
-      'Blockstelle der freien Strecke, wo Züge von einem Gleis auf ein anderes Gleis derselben Strecke übergehen können.',
-      'Stelle, an der Züge von einer Strecke auf eine andere Strecke abzweigen.',
-      'Ein Bahnhof ohne Weichen.',
-      'Der Übergang von Hauptbahn auf Nebenbahn.'
+      'Blockstelle der freien Strecke, wo Züge auf ein anderes Gleis derselben Strecke übergehen können.',
+      'Blockstelle der freien Strecke, wo Züge von einer Strecke auf eine andere Strecke übergehen können.',
+      'Bahnanlage der freien Strecke ohne Weichen.',
+      'Blockstelle der freien Strecke, wo Züge von Hauptbahnen auf Nebenbahnen derselben Strecke übergehen können.'
     ],
     isSafetyCritical: false,
-    source: 'Ril 408.0101',
-    sourceUrl: 'https://www.dbinfrago.com/web/schienennetz/regelwerke/fahrdienstvorschrift'
+    source: 'Ril 408.0055',
+    sourceUrl: 'https://www.dbinfrago.com/resource/blob/13309938/be53e2de35c1f14ae6f55d22bd19852a/40800-ab-15-12-2024-data.pdf#pages=33'
   },
   {
     id: 'ext_4',
