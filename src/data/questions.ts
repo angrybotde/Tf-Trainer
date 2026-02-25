@@ -37,6 +37,21 @@ export const QUESTIONS: Question[] = [
     source: 'EBO §10',
     sourceUrl: 'https://www.gesetze-im-internet.de/ebo/__10.html'
   },
+  {
+    id: 'ebo_n4',
+    theme: 'EBO',
+    question: 'Wie wird die Radsatzlast berechnet?',
+    answer: '(Fahrzeuggewicht + Ladung) / Anzahl der Achsen',
+    options: [
+      '(Fahrzeuggesamtgewicht + Ladung) / Anzahl der Achsen', 
+      '(Zuggewicht + Ladung) / Anzahl der Achsen', 
+      '(Fahrzeuggewicht + Ladung) / Anzahl der Achsen', 
+      '(Zuggesamtgewicht) / Anzahl der Achsen'
+    ],
+    isSafetyCritical: true,
+    source: 'EBO §19',
+    sourceUrl: 'https://www.gesetze-im-internet.de/ebo/__19.html'
+  },
 
   // --- Abkürzungen ---
   {
@@ -1104,6 +1119,21 @@ export const QUESTIONS: Question[] = [
     isSafetyCritical: true,
     source: 'Ril 915',
     sourceUrl: 'https://www.dbinfrago.com/'
+  },
+  {
+    id: 'sig_0',
+    theme: 'Signale',
+    question: 'Woran erkennt man eine Rückfallweiche?',
+    answer: 'Gelb-schwarzes Hebelgewicht',
+    options: [
+      'Weiß-schwarzes Hebelgewicht', 
+      'Rot-gelb-rotes Hebelgewicht', 
+      'Gelb-weißes Hebelgewicht', 
+      'Gelb-schwarzes Hebelgewicht'
+    ],
+    isSafetyCritical: true,
+    source: 'Ril 301.9001',
+    sourceUrl: 'https://www.dbinfrago.com/resource/blob/13174940/cb13a4d1ee7bc79e64ecad219bbd91c4/Ril-301-INB-2026-data.pdf#pages=151'
   },
   {
     id: 'sig_1',
