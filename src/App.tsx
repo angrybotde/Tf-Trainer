@@ -36,6 +36,7 @@ export default function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [sessionQuestions, setSessionQuestions] = useState<Question[]>([]);
   const { progress, recordAnswer, getSuccessRate, resetProgress } = useProgress();
+  const [revealAnswer, setRevealAnswer] = useState(false);
 
   // Update session questions when mode or theme changes
   useEffect(() => {
@@ -67,6 +68,7 @@ export default function App() {
     setShowAnswer(false);
     //setUserInput('');
     setUserSelection('');
+    setRevealAnswer(false); 
   }, [mode, selectedTheme]); // Removed progress dependencies to keep session stable
 
   const currentQuestion = sessionQuestions[currentIndex];
@@ -86,6 +88,7 @@ export default function App() {
     if (currentIndex < sessionQuestions.length - 1) {
       setCurrentIndex(prev => prev + 1);
       setShowAnswer(false);
+      setRevealAnswer(false); 
       //setUserInput('');
     }
   };
@@ -94,6 +97,7 @@ export default function App() {
     if (currentIndex > 0) {
       setCurrentIndex(prev => prev - 1);
       setShowAnswer(false);
+      setRevealAnswer(false); 
       //setUserInput('');
     }
   };
@@ -310,20 +314,41 @@ export default function App() {
 
                       {mode === 'LERNEN' ? (
                         <div className="w-full space-y-6">
-                          <div className="p-8 bg-black/5 rounded-2xl border border-black/5">
-                            <p className="text-lg text-black/80 italic">
-                              {currentQuestion.answer}
-                            </p>
-                          </div>
-                          <div className="flex items-center justify-center gap-4">
-                            <a 
-                              href={currentQuestion.sourceUrl} 
-                              target="_blank" 
-                              rel="noreferrer"
-                              className="text-xs text-black/40 hover:text-black flex items-center gap-1 transition-colors"
+                          {!revealAnswer ? (
+                            <button
+                              onClick={() => setRevealAnswer(true)}
+                              className="w-full p-10 bg-black/[0.03] hover:bg-black/[0.06] border border-black/10 rounded-2xl transition-all flex flex-col items-center justify-center gap-3 min-h-[180px] text-black/50 hover:text-black/80"
                             >
-                              Quelle: {currentQuestion.source} <ExternalLink size={10} />
-                            </a>
+                              <BookOpen size={40} strokeWidth={1.2} />
+                              <span className="text-sm font-medium">Antwort anzeigen</span>
+                            </button>
+                          ) : (
+                            <div className="p-8 bg-black/5 rounded-2xl border border-black/5 animate-fade-in">
+                              <p className="text-lg text-black/80 italic leading-relaxed">
+                                {currentQuestion.answer}
+                              </p>
+                            </div>
+                          )}
+
+                          <div className="flex items-center justify-center gap-6 text-sm">
+                            <button
+                              onClick={() => setRevealAnswer(!revealAnswer)}
+                              className="flex items-center gap-1.5 text-black/50 hover:text-black transition-colors"
+                            >
+                              {revealAnswer ? <XCircle size={16} /> : <BookOpen size={16} />}
+                              {revealAnswer ? 'Antwort ausblenden' : 'Antwort anzeigen'}
+                            </button>
+
+                            {currentQuestion.source && (
+                              <a 
+                                href={currentQuestion.sourceUrl} 
+                                target="_blank" 
+                                rel="noreferrer"
+                                className="flex items-center gap-1 text-black/40 hover:text-black transition-colors"
+                              >
+                                Quelle: {currentQuestion.source} <ExternalLink size={12} />
+                              </a>
+                            )}
                           </div>
                         </div>
                       ) : (
