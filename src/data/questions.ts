@@ -69,6 +69,21 @@ export const QUESTIONS: Question[] = [
     source: 'Ril 408.0054',
     sourceUrl: 'https://www.dbinfrago.com/resource/blob/13309938/be53e2de35c1f14ae6f55d22bd19852a/40800-ab-15-12-2024-data.pdf#page=16'
   },
+  {
+    id: 'abk_2',
+    theme: 'Abkürzungen',
+    question: 'Wofür steht EVU?',
+    answer: 'Eisenbahnverkehrsunternehmen',
+    options: [
+      'Eisenbahnunternehmen',
+      'Eisenbahnverkehrsunternehmen',
+      'Eisenbahninfrastrukturunternehmen',
+      'Eisenbahnbetriebsunternehmen'
+    ],
+    isSafetyCritical: true,
+    source: 'Ril 408.0054',
+    sourceUrl: 'https://www.dbinfrago.com/resource/blob/13309938/be53e2de35c1f14ae6f55d22bd19852a/40800-ab-15-12-2024-data.pdf#page=15'
+  },
 
   // --- RIL 408: DEFINITIONEN ---
   {
@@ -1086,14 +1101,29 @@ export const QUESTIONS: Question[] = [
     sourceUrl: 'https://www.dbinfrago.com/'
   },
   {
-    id: 'sig_10',
+    id: 'multisig_10',
     theme: 'Signale',
-    question: 'Was bedeutet das Signal Zs 103?',
-    answer: 'Rautentafel - Kennzeichnet den Standort eines Vorsignals.',
-    options: ['Rautentafel - Kennzeichnet den Standort eines Vorsignals.', 'Bremstafel.', 'Haltetafel.', 'Geschwindigkeitstafel.'],
+    question: 'Wofür werden Hauptsignale verwendet?',
+    answer: 'Hauptsignale werden verwendet als Einfahrsignale, Ausfahrsignale, Zwischensignale, Blocksignale, Deckungssignale vor Gefahrstellen.',
+    options: [
+      'Einfahrsignale', 
+      'Ausfahrsignale', 
+      'Haltsignale',
+      'Vorsignale',
+      'Zwischensignale', 
+      'Flankenschutzsignale',
+      'Blocksignale',
+      'Blockstreckensignale',
+      'Deckungssignale vor Gefahrstellen'
+    ],
+    correctOptions: ['Einfahrsignale', 
+      'Ausfahrsignale', 
+      'Zwischensignale', 
+      'Blocksignale',
+      'Deckungssignale vor Gefahrstellen'],
     isSafetyCritical: false,
-    source: 'Ril 301',
-    sourceUrl: 'https://www.dbinfrago.com/'
+    source: 'Ril 301.0003',
+    sourceUrl: 'https://www.dbinfrago.com/resource/blob/13174940/cb13a4d1ee7bc79e64ecad219bbd91c4/Ril-301-INB-2026-data.pdf#pages=16'
   },
   {
     id: 'ops_1',

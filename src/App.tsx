@@ -173,7 +173,7 @@ export default function App() {
                 <rect x="9" y="10" width="6" height="4" fill="#000" opacity="0.3" /> {/* Fenster */}
                 <path d="M5 20 H19" stroke="currentColor" strokeWidth="1.5" /> {/* Schienen-Andeutung */}
               </svg>
-              Tf-Prüfungshelfer (Stand: 02/2026)
+              Tf-Trainer Anlage 5 (Stand: 02/2026)
             </h1>
           </div>
         </div>
